@@ -13,9 +13,10 @@
 #pragma mark - 截取当前image对象rect区域内的图像
 - (UIImage *)subImageWithRect:(CGRect)rect
 {
+    
     CGImageRef newImageRef = CGImageCreateWithImageInRect(self.CGImage, rect);
     
-    UIImage *newImage = [UIImage imageWithCGImage:newImageRef];
+    UIImage *newImage = [UIImage imageWithCGImage:newImageRef scale:self.scale orientation:self.imageOrientation];// https://stackoverflow.com/questions/158914/cropping-an-uiimage
     
     CGImageRelease(newImageRef);
     
